@@ -92,7 +92,7 @@ const periodo = `${dataInicio} a ${dataFim}`;
             const imagens = document.getElementById('input-imagens').value;
             const anexo = document.getElementById('input-anexo').value;
 
-           if (!dataInicioRaw || !dataFimRaw || !canal || !tipoCampanha || !mecanica || !descricao || !limitador || !imagens || !anexo) {
+           if (!dataInicioRaw || !dataFimRaw || !canal || !tipoCampanha || !mecanica || !descricao || !limitador) {
      alert('Por favor, preencha todos os campos obrigatórios.');
      return;
 }
