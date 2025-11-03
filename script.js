@@ -71,7 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const autorizada = getRadioValue('autorizada');
-            const periodo = formatarData(document.getElementById('input-periodo').value);
+const dataInicioRaw = document.getElementById('input-periodo-inicio').value;
+const dataFimRaw = document.getElementById('input-periodo-fim').value;
+const dataInicio = formatarData(dataInicioRaw);
+const dataFim = formatarData(dataFimRaw);
+const periodo = `${dataInicio} a ${dataFim}`;
             const canal = document.getElementById('input-canal').value;
             const regionais = getCheckboxValues();
             const tipoCampanha = document.getElementById('input-tipo').value;
@@ -88,10 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const imagens = document.getElementById('input-imagens').value;
             const anexo = document.getElementById('input-anexo').value;
 
-            if (!canal || !tipoCampanha || !mecanica || !descricao || !limitador || !imagens || !anexo) {
-                 alert('Por favor, preencha todos os campos obrigatórios.');
-                 return;
-            }
+           if (!dataInicioRaw || !dataFimRaw || !canal || !tipoCampanha || !mecanica || !descricao || !limitador || !imagens || !anexo) {
+     alert('Por favor, preencha todos os campos obrigatórios.');
+     return;
+}
             
             const textoFinal = `AUTORIZADA: ${autorizada}
 PERÍODO: ${periodo}
