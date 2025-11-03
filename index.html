@@ -66,16 +66,17 @@
                 </div>
 
                 <div id="regionais-off" class="checkbox-container hidden">
-                    <div class="checkbox-item"><input type="checkbox" value="Pará (PA)"> <label>Pará (PA)</label></div>
-                    <div class="checkbox-item"><input type="checkbox" value="Maranhão (MA)"> <label>Maranhão (MA)</label></div>
-                    <div class="checkbox-item"><input type="checkbox" value="Piauí (PI)"> <label>Piauí (PI)</label></div>
-                    <div class="checkbox-item"><input type="checkbox" value="Ceará (CE)"> <label>Ceará (CE)</label></div>
-                    <div class="checkbox-item"><input type="checkbox" value="R. G. do Norte (RN)"> <label>R. G. do Norte (RN)</label></div>
-                    <div class="checkbox-item"><input type="checkbox" value="Paraíba (PB)"> <label>Paraíba (PB)</label></div>
-                    <div class="checkbox-item"><input type="checkbox" value="Pernambuco (PE)"> <label>Pernambuco (PE)</label></div>
-                    <div class="checkbox-item"><input type="checkbox" value="Alagoas (AL)"> <label>Alagoas (AL)</label></div>
-                    <div class="checkbox-item"><input type="checkbox" value="Sergipe (SE)"> <label>Sergipe (SE)</label></div>
-                    <div class="checkbox-item"><input type="checkbox" value="Bahia (BA)"> <label>Bahia (BA)</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="PA"> <label>Pará</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="MA"> <label>Maranhão</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="PI"> <label>Piauí</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="CE"> <label>Ceará </label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="RN"> <label>R. G. do Norte</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="PB"> <label>Paraíba </label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="PE"> <label>Pernambuco</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="AL"> <label>Alagoas</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="SE"> <label>Sergipe</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="BA"> <label>Bahia</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="Todas"> <label>Todas</label></div>
                 </div>
             </div>
 
@@ -99,103 +100,7 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const tipoSelect = document.getElementById('input-tipo');
-            const regionaisOn = document.getElementById('regionais-on');
-            const regionaisOff = document.getElementById('regionais-off');
-            const gerarBtn = document.getElementById('gerar-btn');
-            const copiarBtn = document.getElementById('copiar-btn');
-            const outputContainer = document.getElementById('output-container');
-            const outputText = document.getElementById('output-text');
-
-            // 1. Lógica condicional para as Regionais
-            tipoSelect.addEventListener('change', () => {
-                const tipo = tipoSelect.value;
-                
-                // Reseta (esconde) ambos
-                regionaisOn.classList.add('hidden');
-                regionaisOff.classList.add('hidden');
-
-                if (tipo === 'ON') {
-                    regionaisOn.classList.remove('hidden');
-                } else if (tipo === 'OFF' || tipo === 'ON e OFF' || tipo === 'Institucional') {
-                    regionaisOff.classList.remove('hidden');
-                }
-            });
-
-            // 2. Lógica para Gerar o Texto
-            gerarBtn.addEventListener('click', () => {
-                // Coleta de dados
-                const dataRaw = document.getElementById('input-data').value;
-                const canal = document.getElementById('input-canal').value;
-                const industria = document.getElementById('input-industria').value;
-                const tipo = document.getElementById('input-tipo').value;
-                const publico = document.getElementById('input-publico').value;
-                const mensagem = document.getElementById('input-mensagem').value;
-
-                // Formata a data (de AAAA-MM-DD para DD/MM/AAAA)
-                const dataFormatada = dataRaw ? new Date(dataRaw + 'T00:00:00')
-                                          .toLocaleDateString('pt-BR') 
-                                          : 'DATA PENDENTE';
-
-                // Coleta de dados das checkboxes
-                let regionaisSelecionadas = [];
-                let containerVisivel = '';
-
-                if (!regionaisOn.classList.contains('hidden')) {
-                    containerVisivel = 'regionais-on';
-                } else if (!regionaisOff.classList.contains('hidden')) {
-                    containerVisivel = 'regionais-off';
-                }
-
-                if (containerVisivel) {
-                    document.querySelectorAll(`#${containerVisivel} input[type="checkbox"]:checked`).forEach(cb => {
-                        regionaisSelecionadas.push(cb.value);
-                    });
-                }
-                
-                const regionais = regionaisSelecionadas.length > 0 ? regionaisSelecionadas.join(', ') : 'N/A';
-
-                // Validação simples
-                if (!dataRaw || !canal || !industria || !tipo || !publico || !mensagem || regionaisSelecionadas.length === 0) {
-                    alert('Por favor, preencha todos os campos, incluindo as regionais.');
-                    return;
-                }
-
-                // Monta o template
-                const textoFinal = 
-`${dataFormatada} - ${canal.toUpperCase()} - ${industria.toUpperCase()}
-TIPO: ${tipo}
-REGIONAIS: ${regionais}
-PÚBLICO: ${publico}
-MENSAGEM: ${mensagem}`;
-
-                // Exibe a saída
-                outputText.value = textoFinal;
-                outputContainer.classList.remove('hidden');
-            });
-
-            // 3. Lógica para Copiar
-            copiarBtn.addEventListener('click', () => {
-                outputText.select();
-                outputText.setSelectionRange(0, 99999); // Para mobile
-
-                try {
-                    navigator.clipboard.writeText(outputText.value);
-                    
-                    // Feedback visual
-                    copiarBtn.textContent = 'Copiado com Sucesso!';
-                    setTimeout(() => {
-                        copiarBtn.textContent = 'Copiar Texto';
-                    }, 2000);
-
-                } catch (err) {
-                    copiarBtn.textContent = 'Erro ao copiar';
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
