@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Campanha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Gerador de Campanha</h1>
+        
+        <form id="campaign-form">
+
+            <div class="form-group">
+                <label>Autorizada:</label>
+                <div class="radio-group">
+                    <input type="radio" id="auth-aprovada" name="autorizada" value="Aprovada" required>
+                    <label for="auth-aprovada">Aprovada</label>
+                    <input type="radio" id="auth-aguardando" name="autorizada" value="Aguardando">
+                    <label for="auth-aguardando">Aguardando</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input-periodo">Período da Campanha:</label>
+                <input type="date" id="input-periodo" class="input-field" required>
+            </div>
+
+            <div class="form-group">
+                <label for="input-canal">Canal:</label>
+                <select id="input-canal" class="select-field" required>
+                    <option value="">Selecione um canal...</option>
+                    <option value="ON">ON</option>
+                    <option value="OFF">OFF</option>
+                    <option value="ON E OFF">ON E OFF</option>
+                    <option value="INSTITUCIONAL">INSTITUCIONAL</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Regionais:</label>
+                <div id="regionais-on" class="checkbox-container hidden">
+                    <div class="checkbox-item"><input type="checkbox" value="4 - Imperatriz"> <label>4 - Imperatriz</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="20 - Mix Vinhais"> <label>20 - Mix Vinhais</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="252 - Mix Teresina - PI"> <label>252 - Mix Teresina - PI</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="7 - Cohama"> <label>7 - Cohama</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="255 - Olho D'agua"> <label>255 - Olho D'agua</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="275 - Pq Alvorada (Timon)"> <label>275 - Pq Alvorada (Timon) - MA</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="281 - Mix Aracaju - SE"> <label>281 - Mix Aracaju - SE</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="16 - Calhau"> <label>16 - Calhau</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="34 - Renascença"> <label>34 - Renascença</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="911 - Casa Forte - PE"> <label>911 - Casa Forte - PE</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="253 - Pedreira - PA"> <label>253 - Pedreira - PA</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="904 - Mix Boa Viagem - PE"> <label>904 - Mix Boa Viagem - PE</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="907 - Petrolina - PE"> <label>907 - Petrolina - PE</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="266 - Mix Sobral - CE"> <label>266 - Mix Sobral - CE</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="917 - Trapiche - AL"> <label>917 - Trapiche - AL</label></div>
+                </div>
+                <div id="regionais-off" class="checkbox-container hidden">
+                    <div class="checkbox-item"><input type="checkbox" value="PA"><label>Pará</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="MA"><label>Maranhão</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="PI"><label>Piauí</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="CE"><label>Ceará</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="RN"><label>R. G. do Norte</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="PB"><label>Paraíba</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="PE"><label>Pernambuco</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="AL"><label>Alagoas</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="SE"><label>Sergipe</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="BA"><label>Bahia</label></div>
+                  <div class="checkbox-item"><input type="checkbox" value="Todas"><label>Todas</label></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input-tipo">Tipo de Campanha:</label>
+                <select id="input-tipo" class="select-field" required>
+                    <option value="">Selecione um tipo...</option>
+                    <option value="DESCONTO">DESCONTO</option>
+                    <option value="LEVE PAGUE">LEVE PAGUE</option>
+                    <option value="SELEÇÃO DE BANNER">SELEÇÃO DE BANNER</option>
+                    <option value="CUPOM">CUPOM</option>
+                    <option value="FRETE GRÁTIS">FRETE GRÁTIS</option>
+                    <option value="SUBBANNER">SUBBANNER</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="input-mecanica">Mecânica:</label>
+                <input type="text" id="input-mecanica" class="input-field" required>
+            </div>
+
+            <div class="form-group">
+                <label for="input-descricao">Descrição da Mecânica:</label>
+                <textarea id="input-descricao" class="textarea-field" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="input-limitador">Limitador:</label>
+                <input type="number" id="input-limitador" class="input-field" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label>Etiqueta:</label>
+                <div class="radio-group">
+                    <input type="radio" id="etiqueta-sim" name="etiqueta" value="SIM" required>
+                    <label for="etiqueta-sim">Sim</label>
+                    <input type="radio" id="etiqueta-nao" name="etiqueta" value="NÃO">
+                    <label for="etiqueta-nao">Não</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Segmentada:</label>
+                <div class="radio-group">
+                    <input type="radio" id="segmentada-sim" name="segmentada" value="SIM" required>
+                    <label for="segmentada-sim">Sim</label>
+                    <input type="radio" id="segmentada-nao" name="segmentada" value="NÃO">
+                    <label for="segmentada-nao">Não</label>
+                </div>
+            </div>
+
+            <div class="form-group hidden" id="grupo-clientes-container">
+                <label for="input-grupo-clientes">Grupo de Clientes:</label>
+                <input type="text" id="input-grupo-clientes" class="input-field">
+            </div>
+
+            <div class="form-group">
+                <label>Banners:</label>
+                <div class="radio-group">
+                    <input type="radio" id="banners-sim" name="banners" value="SIM" required>
+                    <label for="banners-sim">Sim</label>
+                    <input type="radio" id="banners-nao" name="banners" value="NÃO">
+                    <label for="banners-nao">Não</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input-imagens">Imagens:</label>
+                <input type="text" id="input-imagens" class="input-field" placeholder="Link do drive ou nome dos arquivos">
+            </div>
+
+            <div class="form-group">
+                <label for="input-anexo">Anexo:</label>
+                <input type="text" id="input-anexo" class="input-field" placeholder="Link do drive ou nome do arquivo">
+            </div>
+
+            <button type="button" id="gerar-btn" class="btn btn-primary">Gerar Texto</button>
+        </form>
+
+        <div id="output-container" class="output-section hidden">
+            <label for="output-text">Seu texto para copiar:</label>
+            <textarea id="output-text" class="textarea-field" readonly></textarea>
+            <button type="button" id="copiar-btn" class="btn btn-secondary">Copiar Texto</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
