@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Texto de Campanha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Gerador de Briefing</h1>
+        
+        <form id="briefing-form">
+            <div class="form-group">
+                <label for="input-data">1. Data</label>
+                <input type="date" id="input-data" class="input-field" required>
+            </div>
+
+            <div class="form-group">
+                <label for="input-canal">2. Canal</label>
+                <select id="input-canal" class="select-field" required>
+                    <option value="">Selecione um canal...</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Push">Push</option>
+                    <option value="E-mail">E-mail</option>
+                    <option value="SMS">SMS</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="input-industria">3. Indústria</label>
+                <input type="text" id="input-industria" class="input-field" placeholder="Ex: Varejo, Financeiro" required>
+            </div>
+
+            <div class="form-group">
+                <label for="input-tipo">4. Tipo</label>
+                <select id="input-tipo" class="select-field" required>
+                    <option value="">Selecione um tipo...</option>
+                    <option value="ON">ON</option>
+                    <option value="OFF">OFF</option>
+                    <option value="ON e OFF">ON e OFF</option>
+                    <option value="Institucional">Institucional</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>5. Regionais</label>
+                
+                <div id="regionais-on" class="checkbox-container hidden">
+                    <div class="checkbox-item"><input type="checkbox" value="4 - Imperatriz"> <label>4 - Imperatriz</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="20 - Mix Vinhais"> <label>20 - Mix Vinhais</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="252 - Mix Teresina - PI"> <label>252 - Mix Teresina - PI</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="7 - Cohama"> <label>7 - Cohama</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="255 - Olho D'agua"> <label>255 - Olho D'agua</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="275 - Pq Alvorada (Timon)"> <label>275 - Pq Alvorada (Timon)</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="281 - Mix Aracaju - SE"> <label>281 - Mix Aracaju - SE</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="16 - Calhau"> <label>16 - Calhau</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="34 - Renascença"> <label>34 - Renascença</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="911 - Casa Forte - PE"> <label>911 - Casa Forte - PE</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="253 - Pedreira - PA"> <label>253 - Pedreira - PA</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="904 - Mix Boa Viagem - PE"> <label>904 - Mix Boa Viagem - PE</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="907 - Petrolina - PE"> <label>907 - Petrolina - PE</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="266 - Mix Sobral - CE"> <label>266 - Mix Sobral - CE</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="917 - Trapiche - AL"> <label>917 - Trapiche - AL</label></div>
+                </div>
+
+                <div id="regionais-off" class="checkbox-container hidden">
+                    <div class="checkbox-item"><input type="checkbox" value="Pará (PA)"> <label>Pará (PA)</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="Maranhão (MA)"> <label>Maranhão (MA)</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="Piauí (PI)"> <label>Piauí (PI)</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="Ceará (CE)"> <label>Ceará (CE)</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="R. G. do Norte (RN)"> <label>R. G. do Norte (RN)</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="Paraíba (PB)"> <label>Paraíba (PB)</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="Pernambuco (PE)"> <label>Pernambuco (PE)</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="Alagoas (AL)"> <label>Alagoas (AL)</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="Sergipe (SE)"> <label>Sergipe (SE)</label></div>
+                    <div class="checkbox-item"><input type="checkbox" value="Bahia (BA)"> <label>Bahia (BA)</label></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input-publico">6. Público</label>
+                <input type="text" id="input-publico" class="input-field" placeholder="Ex: Clientes inativos, Clientes fidelidade" required>
+            </div>
+
+            <div class="form-group">
+                <label for="input-mensagem">7. Mensagem</label>
+                <textarea id="input-mensagem" class="textarea-field" placeholder="Descreva a mensagem principal..." required></textarea>
+            </div>
+
+            <button type="button" id="gerar-btn" class="btn btn-primary">Gerar Texto</button>
+        </form>
+
+        <div id="output-container" class="output-section hidden">
+            <label for="output-text">Seu texto para copiar:</label>
+            <textarea id="output-text" class="textarea-field" readonly></textarea>
+            <button type="button" id="copiar-btn" class="btn btn-secondary">Copiar Texto</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tipoSelect = document.getElementById('input-tipo');
+            const regionaisOn = document.getElementById('regionais-on');
+            const regionaisOff = document.getElementById('regionais-off');
+            const gerarBtn = document.getElementById('gerar-btn');
+            const copiarBtn = document.getElementById('copiar-btn');
+            const outputContainer = document.getElementById('output-container');
+            const outputText = document.getElementById('output-text');
+
+            // 1. Lógica condicional para as Regionais
+            tipoSelect.addEventListener('change', () => {
+                const tipo = tipoSelect.value;
+                
+                // Reseta (esconde) ambos
+                regionaisOn.classList.add('hidden');
+                regionaisOff.classList.add('hidden');
+
+                if (tipo === 'ON') {
+                    regionaisOn.classList.remove('hidden');
+                } else if (tipo === 'OFF' || tipo === 'ON e OFF' || tipo === 'Institucional') {
+                    regionaisOff.classList.remove('hidden');
+                }
+            });
+
+            // 2. Lógica para Gerar o Texto
+            gerarBtn.addEventListener('click', () => {
+                // Coleta de dados
+                const dataRaw = document.getElementById('input-data').value;
+                const canal = document.getElementById('input-canal').value;
+                const industria = document.getElementById('input-industria').value;
+                const tipo = document.getElementById('input-tipo').value;
+                const publico = document.getElementById('input-publico').value;
+                const mensagem = document.getElementById('input-mensagem').value;
+
+                // Formata a data (de AAAA-MM-DD para DD/MM/AAAA)
+                const dataFormatada = dataRaw ? new Date(dataRaw + 'T00:00:00')
+                                          .toLocaleDateString('pt-BR') 
+                                          : 'DATA PENDENTE';
+
+                // Coleta de dados das checkboxes
+                let regionaisSelecionadas = [];
+                let containerVisivel = '';
+
+                if (!regionaisOn.classList.contains('hidden')) {
+                    containerVisivel = 'regionais-on';
+                } else if (!regionaisOff.classList.contains('hidden')) {
+                    containerVisivel = 'regionais-off';
+                }
+
+                if (containerVisivel) {
+                    document.querySelectorAll(`#${containerVisivel} input[type="checkbox"]:checked`).forEach(cb => {
+                        regionaisSelecionadas.push(cb.value);
+                    });
+                }
+                
+                const regionais = regionaisSelecionadas.length > 0 ? regionaisSelecionadas.join(', ') : 'N/A';
+
+                // Validação simples
+                if (!dataRaw || !canal || !industria || !tipo || !publico || !mensagem || regionaisSelecionadas.length === 0) {
+                    alert('Por favor, preencha todos os campos, incluindo as regionais.');
+                    return;
+                }
+
+                // Monta o template
+                const textoFinal = 
+`${dataFormatada} - ${canal.toUpperCase()} - ${industria.toUpperCase()}
+TIPO: ${tipo}
+REGIONAIS: ${regionais}
+PÚBLICO: ${publico}
+MENSAGEM: ${mensagem}`;
+
+                // Exibe a saída
+                outputText.value = textoFinal;
+                outputContainer.classList.remove('hidden');
+            });
+
+            // 3. Lógica para Copiar
+            copiarBtn.addEventListener('click', () => {
+                outputText.select();
+                outputText.setSelectionRange(0, 99999); // Para mobile
+
+                try {
+                    navigator.clipboard.writeText(outputText.value);
+                    
+                    // Feedback visual
+                    copiarBtn.textContent = 'Copiado com Sucesso!';
+                    setTimeout(() => {
+                        copiarBtn.textContent = 'Copiar Texto';
+                    }, 2000);
+
+                } catch (err) {
+                    copiarBtn.textContent = 'Erro ao copiar';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
