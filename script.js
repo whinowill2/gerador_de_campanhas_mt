@@ -97,10 +97,10 @@ const periodo = `${dataInicio} a ${dataFim}`;
      return;
 }
             
-            const textoFinal = `AUTORIZADA: ${autorizada}
+            const textoFinal = `STATUS: ${autorizada}
 PERÍODO: ${periodo}
 CANAL: ${canal}
-RWGIONAIS: ${regionais}
+REGIONAIS: ${regionais}
 TIPO: ${tipoCampanha}
 MECÂNICA: ${mecanica}
 DESCRIÇÃO: ${descricao}
