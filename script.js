@@ -80,6 +80,7 @@ const periodo = `${dataInicio} a ${dataFim}`;
             const regionais = getCheckboxValues();
             const tipoCampanha = document.getElementById('input-tipo').value;
             const mecanica = document.getElementById('input-mecanica').value;
+            const campanha = document.getElementById('input-campanha').value;
             const descricao = document.getElementById('input-descricao').value;
             const limitador = document.getElementById('input-limitador').value;
             const etiqueta = getRadioValue('etiqueta');
@@ -97,7 +98,9 @@ const periodo = `${dataInicio} a ${dataFim}`;
      return;
 }
             
-            const textoFinal = `STATUS: ${autorizada}
+ const textoFinal = `
+CAMPANHA: ${campanha}
+STATUS: ${autorizada}
 PERÍODO: ${periodo}
 CANAL: ${canal}
 REGIONAIS: ${regionais}
